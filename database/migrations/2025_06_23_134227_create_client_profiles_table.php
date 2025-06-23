@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('client_profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users','id');
+            $table->foreignId('user_id')->constrained('users','id')->onDelete('cascade');
             $table->string('personal_access_key')->unique();
             $table->text('health_notes')->nullable();
             $table->timestamps();

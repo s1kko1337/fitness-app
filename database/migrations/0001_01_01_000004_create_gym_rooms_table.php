@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('gym_rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->foreignId('trainer_id')->constrained('users','id')->onDelete('cascade');
             $table->foreignId('gym_id')->constrained('gyms','id')->onDelete('cascade');
-            $table->foreignId('activity_type_id')->constrained('activity_types','id')->onDelete('cascade');
-            $table->unsignedTinyInteger('max_clients');
+            $table->foreignId('type_id')->constrained('room_types','id')->onDelete('cascade');
+            $table->string('name');
+            $table->unsignedTinyInteger('capacity');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('gym_rooms');
     }
 };

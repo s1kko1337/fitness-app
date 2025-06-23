@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained('users','id');
-            $table->foreignId('schedule_id')->constrained('schedules','id');
+            $table->foreignId('client_id')->constrained('users','id')->onDelete('cascade');
+            $table->foreignId('schedule_id')->constrained('schedules','id')->onDelete('cascade');
             $table->boolean('is_visited')->default(false);
             $table->text('personal_notes')->nullable();
             $table->timestamps();
