@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('trainer_profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users','id');
+            $table->foreignId('user_id')->constrained('users','id')->onDelete('cascade');
             $table->string('qualification');
-            $table->string('specialization_id')->constrained('specializations','id');
+            $table->foreignId('specialization_id')->constrained('specializations','id')->onDelete('cascade');
             $table->tinyInteger('hourly_rate');
             $table->timestamps();
         });

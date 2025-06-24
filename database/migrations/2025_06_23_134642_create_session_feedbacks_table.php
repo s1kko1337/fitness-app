@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('session_feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->constrained('bookings','id');
-            $table->foreignId('client_id')->constrained('users','id');
-            $table->foreignId('trainer_id')->constrained('users','id');
+            $table->foreignId('booking_id')->constrained('bookings','id')->onDelete('cascade');
+            $table->foreignId('client_id')->constrained('users','id')->onDelete('cascade');
+            $table->foreignId('trainer_id')->constrained('users','id')->onDelete('cascade');
             $table->unsignedTinyInteger('rating');
             $table->text('comment');
             $table->timestamps();
