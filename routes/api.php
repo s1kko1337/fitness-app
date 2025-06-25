@@ -10,11 +10,9 @@ Route::prefix('v1')->group(function () {
     Route::post('login',[AuthController::class, 'login']);
 
     Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
-        Route::get('test', function(){
-            return response()->json([
-                'message' => 'test'
-            ], Response::HTTP_OK);
-        });
+
+
+        Route::post('test',\App\Http\Controllers\CreateGymController::class);
         Route::get('logout',[AuthController::class, 'logout']);
     });
 });

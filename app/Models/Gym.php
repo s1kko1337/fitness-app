@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Gym extends Model
 {
     protected $table = 'gyms';
-    protected $fillable = ['name', 'address', 'phone', 'email'];
+
+    protected $fillable = [
+        'name',
+        'address',
+        'phone',
+        'email'
+    ];
 
     public function users(): HasMany
     {
