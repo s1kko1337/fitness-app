@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin;
 use App\Models\Gym;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use Lorisleiva\Actions\Concerns\AsAction;
+
 final class CreateGymOperator
 {
     use AsAction;

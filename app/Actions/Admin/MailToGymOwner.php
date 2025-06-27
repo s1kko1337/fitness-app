@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin;
 use App\Mail\GymOwnerWelcome;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 use Lorisleiva\Actions\Concerns\AsAction;
+
 final class MailToGymOwner
 {
     use AsAction;

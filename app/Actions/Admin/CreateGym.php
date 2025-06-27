@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin;
 use App\Models\Gym;
-use Illuminate\Support\Str;
 use Lorisleiva\Actions\Concerns\AsAction;
+
 final class CreateGym
 {
     use AsAction;

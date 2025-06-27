@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Lorisleiva\Actions\Concerns\AsAction;
-use Symfony\Component\HttpFoundation\Response;
 
 final class InitGym
 {
@@ -19,10 +18,13 @@ final class InitGym
         try {
             $gym = CreateGym::run($request);
             $user = CreateGymOperator::run($gym, $password);
+            $gym->owner_id = $user->id;
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
         }
         MailToGymOwner::run($user, $password);
+
+        return $gym;
     }
 }
