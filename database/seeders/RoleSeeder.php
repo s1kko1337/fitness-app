@@ -20,6 +20,10 @@ class RoleSeeder extends Seeder
         $trainerRole = Role::create(['name' => 'trainer']);
         $adminRole = Role::create(['name' => 'admin']);
 
+        $gymOperatorRole = Role::create(['name' => 'gym-operator']);
+
+        $gymOperatorPermission = Permission::create(['name' => 'manage-gym']);
+
         $basicPermission = Permission::create(['name' => 'use-Api', 'guard_name' => 'web']);
 
         $adminPermission = Permission::create(['name' => 'admin', 'guard_name' => 'web']);
@@ -27,6 +31,7 @@ class RoleSeeder extends Seeder
         $basicTrainerPermission = Permission::create(['name' => 'train', 'guard_name' => 'web']);
 
         $clientRole->givePermissionTo($basicPermission);
+        $gymOperatorRole->givePermissionTo($basicPermission,$gymOperatorPermission);
         $trainerRole->givePermissionTo($basicPermission,$basicTrainerPermission);
         $adminRole->givePermissionTo([$basicPermission, $adminPermission]);
 
