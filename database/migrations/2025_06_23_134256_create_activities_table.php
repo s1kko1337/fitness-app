@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->foreignId('trainer_id')->constrained('users','id')->onDelete('cascade');
-            $table->foreignId('gym_id')->constrained('gyms','id')->onDelete('cascade');
+            $table->foreignId('gym_room_id')->constrained('gym_rooms','id')->onDelete('cascade');
             $table->foreignId('activity_type_id')->constrained('activity_types','id')->onDelete('cascade');
-            $table->unsignedTinyInteger('max_clients');
+            $table->unsignedTinyInteger('capacity');
             $table->timestamps();
         });
     }
