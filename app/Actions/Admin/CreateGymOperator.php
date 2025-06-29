@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Actions\Admin;
+use App\DTO\GymOperatorCreateData;
 use App\Models\Gym;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -10,15 +11,9 @@ final class CreateGymOperator
 {
     use AsAction;
 
-    public static function handle(Gym $gym, $password) : User
+    public static function handle(GymOperatorCreateData $data) : User
     {
-        $user = User::create([
-            'name' => $gym->name,
-            'surname' => 'test',
-            'email' => $gym->email,
-            'password' => Hash::make($password),
-            'gym_id' => $gym->id,
-        ]);
+        $user = User::create($data->toArray());
         $user->assignRole('gym-operator');
 
         return $user;

@@ -2,13 +2,14 @@
 
 namespace App\Actions\Auth;
 
+use App\Models\User;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 final class Login
 {
     use AsAction;
 
-    public static function handle($user)
+    public static function handle(User $user)
     {
         $permissions = $user->getAllPermissions()->pluck('name')->toArray();
         $user->tokens()->delete();
