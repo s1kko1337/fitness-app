@@ -25,13 +25,13 @@ docker-build: \
 #	docker-build-redis
 
 docker-build-nginx:
-	@docker-compose -p ${INDEX} build nginx --no-cache
+	@docker-compose -p ${INDEX} build nginx
 docker-build-php-fpm:
-	@docker-compose -p ${INDEX} build php-fpm --no-cache
+	@docker-compose -p ${INDEX} build php-fpm
 docker-build-php-cli:
-	@docker-compose -p ${INDEX} build php-cli --no-cache
+	@docker-compose -p ${INDEX} build php-cli
 docker-build-nodejs:
-	@docker-compose -p ${INDEX} build nginx --no-cache
+	@docker-compose -p ${INDEX} build nginx
 #docker-build-mysql:
 #	@docker-compose -p ${INDEX} build mysql --no-cache
 #docker-build-redis:

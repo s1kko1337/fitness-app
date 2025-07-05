@@ -6,7 +6,7 @@ use App\Models\Gym;
 use App\Parents\ObjectData;
 use Illuminate\Support\Facades\Hash;
 
-class GymOperatorCreateData extends ObjectData
+class CreateGymOperatorData extends ObjectData
 {
     public string $name;
     public string $surname;
@@ -15,9 +15,9 @@ class GymOperatorCreateData extends ObjectData
     public string $gym_id;
 
 
-    public static function fromModel(Gym $gym, $password): GymOperatorCreateData
+    public static function fromModel(Gym $gym, $password): CreateGymOperatorData
     {
-        return new GymOperatorCreateData(
+        return new CreateGymOperatorData(
             name: $gym->name,
             surname: 'edit this',
             email: $gym->email,
