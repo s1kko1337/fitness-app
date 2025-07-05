@@ -27,6 +27,10 @@ class Gym extends Model
         return $this->hasMany(User::class, 'gym_id', 'id');
     }
 
+    public function trainers(): HasMany
+    {
+        return $this->hasMany(User::class, 'gym_id', 'id')->where('role_id', 2);
+    }
     public function gymRooms(): HasMany
     {
         return $this->hasMany(GymRoom::class, 'gym_id', 'id');

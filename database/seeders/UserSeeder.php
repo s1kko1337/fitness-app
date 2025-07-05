@@ -15,17 +15,19 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $role = Role::findByName('admin');
         $user = User::firstOrCreate(
             ['email' => 'sikko4890@gmail.com'],
             [
                 'name' => 'Admin',
                 'surname' => 'User',
                 'password' => Hash::make('sikko4890@gmail.com'),
+                'role_id' => $role->id,
                 'email_verified_at' => now(),
             ]
         );
 
-        $user->assignRole('admin');
+        $user->assignRole($role);
 
         $user->tokens()->delete();
         $permissions = $user->getPermissionsViaRoles()->pluck('name')->toArray();

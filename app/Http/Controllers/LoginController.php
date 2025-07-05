@@ -3,25 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Auth\Login;
-use App\Actions\Auth\Logout;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Resources\UserResource;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
-    public function login(LoginUserRequest $request): JsonResponse
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(LoginUserRequest $request) : \Illuminate\Http\JsonResponse
     {
         $user = Auth::attempt($request->validated()) && ($user = Auth::user()) ? $user : null;
         Login::run($user);
         return $this->userLogined(UserResource::make($user));
-    }
-
-    public function logout(): JsonResponse
-    {
-        $user = Auth::user();
-        Logout::run($user);
-        return $this->userLogout(UserResource::make($user));
     }
 }
