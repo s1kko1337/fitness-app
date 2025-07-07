@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Actions\Admin;
+use App\DTO\UserData;
 use App\Mail\GymOwnerWelcome;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
@@ -10,8 +11,8 @@ final class MailToGymOwner
 {
     use AsAction;
 
-    public static function handle(User $user, $password)
+    public static function handle(UserData $userData): void
     {
-        Mail::to($user->email)->send(new GymOwnerWelcome($user->email, $password));
+        Mail::to($userData->email)->send(new GymOwnerWelcome($userData->email, $userData->password));
     }
 }

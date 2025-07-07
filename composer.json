@@ -16,6 +16,7 @@
         "league/commonmark": "^2.7",
         "lorisleiva/laravel-actions": "^2.9",
         "predis/predis": "^2.0",
+        "spatie/data-transfer-object": "^3.9",
         "spatie/laravel-permission": "^6.20"
     },
     "require-dev": {
